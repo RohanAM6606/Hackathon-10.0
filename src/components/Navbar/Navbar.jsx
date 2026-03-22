@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect } from "react";
 import logoImage from "../../assets/images/hack-logo.png";
 
 const Navbar = () => {
-  const [activeSection, setActiveSection] = useState("domains");
+  const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -16,11 +17,11 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
+    { id: "home", label: "Home" },
     { id: "about", label: "About" },
-    { id: "domains", label: "Domains" },
-    { id: "events", label: "Events" },
-    { id: "teams", label: "Teams" },
-    { id: "contact", label: "Contact Us" },
+    { id: "timeline", label: "Timeline" },
+    { id: "faq", label: "FAQ" },
+    { id: "register", label: "Register" }, 
   ];
 
   const handleNavClick = (item) => {
@@ -28,14 +29,9 @@ const Navbar = () => {
     setMenuOpen(false);
 
     const element = document.querySelector(`[data-section="${item.id}"]`);
-
     if (element) {
       const offsetTop = element.offsetTop - 80;
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
     }
   };
 
@@ -56,16 +52,10 @@ const Navbar = () => {
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-blue-400/20 opacity-40 blur-md"></div>
 
         <div className="relative flex items-center justify-between px-6 md:px-10 py-4">
-
           {/* Logo */}
           <div
             className="flex items-center gap-3 group cursor-pointer"
-            onClick={() =>
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              })
-            }
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <div className="relative">
               <div className="absolute inset-0 bg-blue-500/40 rounded-full blur-lg group-hover:bg-blue-400/60 transition"></div>
@@ -133,7 +123,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-300 ${
-            menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+            menuOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="px-4 pb-4 space-y-2 pt-4">
@@ -181,3 +171,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
