@@ -38,7 +38,7 @@ export default function HeroSection() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 min-h-[calc(100vh-96px)] space-y-10">
 
         {/* TITLE */}
-        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-blue-500">
+        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-cyan-200 to-cyan-800">
           HACKATHON{" "}
           <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
             10.0
