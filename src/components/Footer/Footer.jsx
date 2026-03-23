@@ -4,9 +4,7 @@ import LightWavesBackground from "../ui/LightWavesBackground";
 const Footer = () => {
   return (
     <footer className="relative bg-transparent text-white pt-12 pb-8 overflow-hidden border-t border-cyan-400/30">
-      <div className="absolute inset-0">
-        <LightWavesBackground />
-      </div>
+      <LightWavesBackground />
       <div className="relative container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
