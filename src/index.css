@@ -13,3 +13,10 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+
+@import "@fontsource/inter";
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
