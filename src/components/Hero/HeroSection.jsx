@@ -62,13 +62,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-6 min-h-[calc(100vh-96px)] space-y-12">
 
-        {/* TITLE */}
-        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-cyan-200 to-cyan-800">
-          HACKATHON{" "}
-          <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-            10.0
-          </span>
-        </h1>
+
         <div className="flex flex-col items-center space-y-4">
 
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-950/40 border border-blue-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.2)]">
