@@ -31,113 +31,58 @@ export default function HeroSection() {
   return (
     <section className="relative w-screen min-h-screen pt-24 overflow-hidden bg-[#000511]">
 
-      {/* Background Waves */}
       <div className="absolute inset-0">
         <GridBackground />
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(40)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-blue-400 animate-float"
-            style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              opacity: Math.random() * 0.5 + 0.2,
-              animationDuration: `${Math.random() * 10 + 10}s`,
-              animationDelay: `${Math.random() * 5}s`,
-              boxShadow: "0 0 8px rgba(96, 165, 250, 0.8)",
-            }}
-          ></div>
-        ))}
-      </div>
-
-      {/* Background Glow */}
-      <div className="absolute top-[20%] left-[20%] w-[300px] h-[300px] bg-blue-600/20 blur-[100px] rounded-full"></div>
-      <div className="absolute bottom-[20%] right-[20%] w-[400px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full"></div>
-
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-6 min-h-[calc(100vh-96px)] space-y-12">
-
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 min-h-screen space-y-10">
 
         <div className="flex flex-col items-center space-y-4">
 
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-950/40 border border-blue-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-            <span className="text-blue-200 text-xs md:text-sm font-semibold tracking-widest uppercase">
-             TEAM SRM HACKATHON PRESENTS 
-            </span>
-          </div>
+          <span className="text-blue-300 text-sm uppercase tracking-widest">
+            TEAM SRM HACKATHON PRESENTS
+          </span>
 
-          {/* FIXED HEADING SIZE */}
-          <h1 className="relative text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none">
-            <span className="bg-gradient-to-b from-white via-blue-400 to-blue-900 bg-clip-text text-transparent drop-shadow-[0_4px_32px_rgba(37,99,235,0.5)]">
-              HACKATHON 10.0
-            </span>
+          <h1 className="text-5xl md:text-6xl font-bold text-white">
+            HACKATHON <span className="text-blue-400">10.0</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-blue-200/80 max-w-2xl tracking-wide font-light mt-4">
-            48 hours of pure innovation. Build, compete, and forge the future.
+          <p className="text-blue-200 max-w-xl">
+            48 hours of innovation. Build, compete, and create the future.
           </p>
+
         </div>
 
-        {/* COUNTDOWN */}
-        <div className="flex gap-4 md:gap-6 flex-wrap justify-center mt-6">
+        <div className="flex gap-4 flex-wrap justify-center">
           {[
             { label: "Days", value: timeLeft.days },
             { label: "Hours", value: timeLeft.hours },
             { label: "Minutes", value: timeLeft.minutes },
             { label: "Seconds", value: timeLeft.seconds },
           ].map((item, i) => (
-            <div
-              key={i}
-              className="relative group w-24 h-28 md:w-32 md:h-36 rounded-2xl 
-              bg-[#00081a]/40 border border-t-white/20 border-x-white/5 border-b-transparent 
-              backdrop-blur-xl 
-              flex flex-col items-center justify-center 
-              hover:-translate-y-2 hover:border-t-blue-400/50 hover:bg-[#00081a]/60
-              transition-all duration-500 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-            >
-              <div className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-blue-300 z-10">
+            <div key={i} className="w-20 h-24 bg-blue-900/40 rounded-lg flex flex-col items-center justify-center">
+              <div className="text-2xl font-bold text-white">
                 {String(item.value).padStart(2, "0")}
               </div>
-              <div className="text-xs text-blue-300/60 mt-2 font-semibold uppercase tracking-[0.2em]">
+              <div className="text-xs text-blue-300 mt-1">
                 {item.label}
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
         {isOpen ? (
-          <button className="relative group mt-10 px-10 py-4 md:px-14 md:py-5 rounded-full 
-          bg-blue-400 text-white font-semibold text-lg md:text-xl 
-          hover:scale-105 transition-all duration-500 
-          shadow-[0_0_40px_rgba(37,99,235,0.4)]">
+          <button className="mt-6 px-6 py-3 bg-blue-500 text-white rounded-lg">
             Register Now
           </button>
         ) : (
-          <div className="mt-10 px-10 py-4 rounded-full bg-white/5 border border-white/10 text-gray-500 font-semibold text-lg">
+          <div className="mt-6 text-gray-400">
             Registration Closed
           </div>
         )}
 
       </div>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
-        .animate-float {
-          animation: float 12s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 }
-
 
