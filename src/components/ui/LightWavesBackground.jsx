@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from "react";
 
 function hexToRgb(hex) {
@@ -21,35 +22,41 @@ export default function LightWavesBackground() {
     if (!canvas || !container) return;
 
     const ctx = canvas.getContext("2d");
+    let animationFrameId;
 
-    let width = container.offsetWidth;
-    let height = container.offsetHeight;
+    const resize = () => {
+      let width = container.offsetWidth;
+      let height = container.offsetHeight;
+      canvas.width = width;
+      canvas.height = height;
 
-    canvas.width = width;
-    canvas.height = height;
+      const colors = ["#0284c7", "#0ea5e9", "#38bdf8", "#60a5fa", "#3b82f6"];
 
-    const colors = ["#0ea5e9", "#8b5cf6", "#06b6d4"];
+      wavesRef.current = Array.from({ length: 8 }).map((_, i) => ({
+        y: height * (0.5 + (i / 8) * 0.4),
+        amplitude: height * (0.12 + Math.random() * 0.15),
+        frequency: 0.001 + Math.random() * 0.001,
+        speed: (0.09 + Math.random() * 0.02) * (i % 2 ? -1 : 1),
+        phase: Math.random() * Math.PI * 2,
+        color: colors[i % colors.length],
+        opacity: 0.08 + Math.random() * 0.2,
+      }));
+    };
 
-    // create waves
-    wavesRef.current = Array.from({ length: 5 }).map((_, i) => ({
-      y: height * (0.3 + (i / 5) * 0.5),
-      amplitude: height * (0.1 + Math.random() * 0.1),
-      frequency: 0.002 + Math.random() * 0.002,
-      speed: (0.2 + Math.random() * 0.3) * (i % 2 ? -1 : 1),
-      phase: Math.random() * Math.PI * 2,
-      color: colors[i % colors.length],
-      opacity: 0.1 + Math.random() * 0.1,
-    }));
+    resize();
+    window.addEventListener("resize", resize);
 
     let start = Date.now();
 
     const draw = () => {
       const time = (Date.now() - start) * 0.001;
+      let width = container.offsetWidth;
+      let height = container.offsetHeight;
 
-      // background
       const gradient = ctx.createLinearGradient(0, 0, 0, height);
-      gradient.addColorStop(0, "#030712");
-      gradient.addColorStop(1, "#020617");
+      gradient.addColorStop(0, "#00030a");
+      gradient.addColorStop(0.5, "#00081a");
+      gradient.addColorStop(1, "#011233");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
@@ -57,40 +64,40 @@ export default function LightWavesBackground() {
         const rgb = hexToRgb(wave.color);
 
         ctx.beginPath();
-        for (let x = 0; x <= width; x += 5) {
+        for (let x = 0; x <= width; x += 6) {
           const y =
             wave.y +
-            Math.sin(x * wave.frequency + time * wave.speed + wave.phase) *
-              wave.amplitude;
+            Math.sin(x * wave.frequency + time * wave.speed + wave.phase) * wave.amplitude +
+            Math.sin(x * wave.frequency * 2 + time * wave.speed * 1.5) * (wave.amplitude * 0.3);
 
           x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
         }
+
+        ctx.strokeStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${wave.opacity * 2})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
 
         ctx.lineTo(width, height);
         ctx.lineTo(0, height);
         ctx.closePath();
 
-        const g = ctx.createLinearGradient(
-          0,
-          wave.y - wave.amplitude,
-          0,
-          height
-        );
-
-        g.addColorStop(
-          0,
-          `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${wave.opacity})`
-        );
+        const g = ctx.createLinearGradient(0, wave.y - wave.amplitude, 0, height);
+        g.addColorStop(0, `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${wave.opacity})`);
         g.addColorStop(1, "transparent");
 
         ctx.fillStyle = g;
         ctx.fill();
       });
 
-      requestAnimationFrame(draw);
+      animationFrameId = requestAnimationFrame(draw);
     };
 
     draw();
+
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   return (
