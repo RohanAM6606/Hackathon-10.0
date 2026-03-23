@@ -63,29 +63,20 @@ export default function HeroSection() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-6 min-h-[calc(100vh-96px)] space-y-12">
 
         {/* TITLE */}
-        <div className="flex flex-col items-center space-y-4">
+        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-cyan-200 to-cyan-800">
+          HACKATHON{" "}
+          <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+            10.0
+          </span>
+        </h1>
 
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-950/40 border border-blue-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-            <span className="text-blue-200 text-xs md:text-sm font-semibold tracking-widest uppercase">
-             TEAM SRM HACKATHON PRESENTS 
-            </span>
-          </div>
+        {/* SUBTEXT */}
+        <p className="text-lg md:text-xl text-gray-400 max-w-xl">
+          48 hours of innovation. Build, compete, and create solutions that matter.
+        </p>
 
-          {/* FIXED HEADING SIZE */}
-          <h1 className="relative text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none">
-            <span className="bg-gradient-to-b from-white via-blue-400 to-blue-900 bg-clip-text text-transparent drop-shadow-[0_4px_32px_rgba(37,99,235,0.5)]">
-              HACKATHON 10.0
-            </span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-blue-200/80 max-w-2xl tracking-wide font-light mt-4">
-            48 hours of pure innovation. Build, compete, and forge the future.
-          </p>
-        </div>
-
-        {/* COUNTDOWN */}
-        <div className="flex gap-4 md:gap-6 flex-wrap justify-center mt-6">
+        {/* COUNTDOWN (clean cards) */}
+        <div className="flex gap-4 md:gap-6 flex-wrap justify-center">
           {[
             { label: "Days", value: timeLeft.days },
             { label: "Hours", value: timeLeft.hours },
@@ -139,4 +130,3 @@ export default function HeroSection() {
     </section>
   );
 }
-
