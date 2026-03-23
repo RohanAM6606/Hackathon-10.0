@@ -39,20 +39,13 @@ export default function HeroSection() {
 
         <div className="flex flex-col items-center space-y-4">
 
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-950/40 border border-blue-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-            <span className="text-blue-100 text-xs md:text-sm font-bold tracking-widest uppercase">
-              TEAM SRM HACKATHON PRESENTS 
-            </span>
-          </div>
-
-          <h1 className="relative text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none">
-            <span className="bg-gradient-to-b from-white via-blue-500 to-cyan-900 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(59,130,246,0.6)]">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none">
+            <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
               HACKATHON 10.0
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-blue-200 max-w-2xl tracking-wide font-semibold mt-4">
+          <p className="text-lg md:text-xl text-blue-200 font-medium max-w-2xl mt-4">
             48 hours of pure innovation. Build, compete, and forge the future.
           </p>
 
@@ -67,17 +60,14 @@ export default function HeroSection() {
           ].map((item, i) => (
             <div
               key={i}
-              className="relative group w-24 h-28 md:w-32 md:h-36 rounded-2xl 
-              bg-[#00081a]/40 border border-t-white/20 border-x-white/5 border-b-transparent 
-              backdrop-blur-xl 
-              flex flex-col items-center justify-center 
-              hover:-translate-y-2 hover:border-t-blue-400/50 hover:bg-[#00081a]/60
-              transition-all duration-500 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+              className="w-24 h-28 md:w-32 md:h-36 rounded-2xl 
+              bg-[#00081a]/40 border border-white/10 backdrop-blur-xl 
+              flex flex-col items-center justify-center"
             >
-              <div className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-blue-300">
+              <div className="text-4xl md:text-5xl font-bold text-white">
                 {String(item.value).padStart(2, "0")}
               </div>
-              <div className="text-xs text-blue-300/60 mt-2 font-semibold uppercase tracking-[0.2em]">
+              <div className="text-xs text-blue-300 mt-2 uppercase tracking-wide">
                 {item.label}
               </div>
             </div>
@@ -85,29 +75,17 @@ export default function HeroSection() {
         </div>
 
         {isOpen ? (
-          <button className="relative group mt-10 px-10 py-4 md:px-14 md:py-5 rounded-full 
-          bg-blue-400 text-white font-semibold text-lg md:text-xl 
-          hover:scale-105 transition-all duration-500 
-          shadow-[0_0_40px_rgba(37,99,235,0.4)]">
+          <button className="mt-10 px-10 py-4 rounded-full bg-blue-500 text-white font-semibold text-lg">
             Register Now
           </button>
         ) : (
-          <div className="mt-10 px-10 py-4 rounded-full bg-white/5 border border-white/10 text-gray-500 font-semibold text-lg">
+          <div className="mt-10 text-gray-400 font-semibold">
             Registration Closed
           </div>
         )}
 
       </div>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
-        }
-        .animate-float {
-          animation: float 12s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 }
+
