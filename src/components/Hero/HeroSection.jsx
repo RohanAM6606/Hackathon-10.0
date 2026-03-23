@@ -39,18 +39,29 @@ export default function HeroSection() {
 
         <div className="flex flex-col items-center space-y-4">
 
+          {/* Badge */}
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-950/40 border border-blue-500/30 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+            <span className="text-blue-100 text-xs md:text-sm font-bold tracking-widest uppercase">
+              TEAM SRM HACKATHON PRESENTS
+            </span>
+          </div>
+
+          {/* Main Heading */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none">
             <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
               HACKATHON 10.0
             </span>
           </h1>
 
+          {/* Subtext */}
           <p className="text-lg md:text-xl text-blue-200 font-medium max-w-2xl mt-4">
             48 hours of pure innovation. Build, compete, and forge the future.
           </p>
 
         </div>
 
+        {/* Countdown */}
         <div className="flex gap-4 md:gap-6 flex-wrap justify-center mt-6">
           {[
             { label: "Days", value: timeLeft.days },
@@ -74,6 +85,7 @@ export default function HeroSection() {
           ))}
         </div>
 
+        {/* CTA */}
         {isOpen ? (
           <button className="mt-10 px-10 py-4 rounded-full bg-blue-500 text-white font-semibold text-lg">
             Register Now
