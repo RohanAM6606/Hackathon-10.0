@@ -56,7 +56,7 @@ export default function HeroSection() {
 
           {/* Subtext */}
           <p className="text-lg md:text-xl text-blue-200 font-medium max-w-2xl mt-4">
-            48 hours of pure innovation. Build, compete, and forge the future.
+            36 hours of pure innovation. Build, compete, and forge the future.
           </p>
 
         </div>
@@ -87,7 +87,7 @@ export default function HeroSection() {
 
         {/* CTA */}
         {isOpen ? (
-          <button className="mt-10 px-10 py-4 rounded-full bg-blue-500 text-white font-semibold text-lg">
+          <button className="mt-10 px-10 py-4 rounded-full bg-cyan-500 to -cyan bg-blue-400 text-white font-semibold text-lg">
             Register Now
           </button>
         ) : (
