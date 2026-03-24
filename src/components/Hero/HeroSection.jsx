@@ -56,7 +56,7 @@ export default function HeroSection() {
 
           {/* Subtext */}
           <p className="text-lg md:text-xl text-blue-200 font-medium max-w-2xl mt-4">
-            48 hours of pure innovation. Build, compete, and forge the future.
+            36 hours of pure innovation. Build, compete, and forge the future.
           </p>
 
         </div>
