@@ -1,7 +1,8 @@
 import HeroSection from "../components/Hero/HeroSection";
 import Sponsor from "../components/Sponsor/Sponsor";
 import Navbar from "../components/Navbar/Navbar";
-
+import Domain from "../components/Domain/Domain";
+import EventDetails from "../components/EventDetails/EventDetails";
 const Home = () => {
   return (
     <div>
@@ -9,6 +10,15 @@ const Home = () => {
 
     <div data-section="home">
         <HeroSection />
+      </div>
+
+      
+      <div data-section="domain">
+        <Domain />
+      </div>
+
+      <div data-section="event">
+        <EventDetails />
       </div>
 
       <div data-section="sponsor">
