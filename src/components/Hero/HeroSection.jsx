@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import GridBackground from "../ui/LightWavesBackground.jsx";
 
@@ -31,34 +30,36 @@ export default function HeroSection() {
   return (
     <section className="relative w-screen min-h-screen pt-24 overflow-hidden bg-[#000511]">
 
+      {/* Background */}
       <div className="absolute inset-0">
         <GridBackground />
       </div>
 
+      {/* Overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-black/60"></div>
+
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-6 min-h-[calc(100vh-96px)] space-y-12">
 
+        {/* Header */}
         <div className="flex flex-col items-center space-y-4">
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-blue-950/40 border border-blue-500/30 backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full 
+          bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             <span className="text-blue-100 text-xs md:text-sm font-bold tracking-widest uppercase">
               TEAM SRM HACKATHON PRESENTS
             </span>
           </div>
 
-          {/* Main Heading */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none">
             <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
               HACKATHON 10.0
             </span>
           </h1>
 
-          {/* Subtext */}
           <p className="text-lg md:text-xl text-blue-200 font-medium max-w-2xl mt-4">
             36 hours of pure innovation. Build, compete, and forge the future.
           </p>
-
         </div>
 
         {/* Countdown */}
@@ -72,13 +73,18 @@ export default function HeroSection() {
             <div
               key={i}
               className="w-24 h-28 md:w-32 md:h-36 rounded-2xl 
-              bg-[#00081a]/40 border border-white/10 backdrop-blur-xl 
-              flex flex-col items-center justify-center"
+              bg-white/5 backdrop-blur-2xl border border-white/20 
+              shadow-[0_8px_32px_rgba(0,0,0,0.6)] 
+              flex flex-col items-center justify-center
+              relative overflow-hidden"
             >
-              <div className="text-4xl md:text-5xl font-bold text-white">
+              {/* Inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30"></div>
+
+              <div className="text-4xl md:text-5xl font-bold text-white z-10">
                 {String(item.value).padStart(2, "0")}
               </div>
-              <div className="text-xs text-blue-300 mt-2 uppercase tracking-wide">
+              <div className="text-xs text-blue-300 mt-2 uppercase tracking-wide z-10">
                 {item.label}
               </div>
             </div>
@@ -87,7 +93,11 @@ export default function HeroSection() {
 
         {/* CTA */}
         {isOpen ? (
-          <button className="mt-10 px-10 py-4 rounded-full bg-cyan-500 to -cyan bg-blue-400 text-white font-semibold text-lg">
+          <button className="mt-10 px-10 py-4 rounded-full 
+          bg-white/10 backdrop-blur-xl border border-white/20
+          text-white font-semibold text-lg
+          shadow-[0_0_20px_rgba(56,189,248,0.6)]
+          hover:scale-105 hover:bg-white/20 transition-all duration-300">
             Register Now
           </button>
         ) : (
@@ -95,9 +105,7 @@ export default function HeroSection() {
             Registration Closed
           </div>
         )}
-
       </div>
     </section>
   );
 }
-
