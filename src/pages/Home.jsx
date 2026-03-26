@@ -1,3 +1,4 @@
+import FaqSection from "../components/Faq/FaqSection"
 import HeroSection from "../components/Hero/HeroSection";
 import Sponsor from "../components/Sponsor/Sponsor";
 import Navbar from "../components/Navbar/Navbar";
@@ -24,6 +25,10 @@ const Home = () => {
       <div data-section="sponsor">
         <Sponsor />
       </div>
+      <div data-section="faq">
+        <FaqSection />
+      </div>
+
     </div>
   );
 };
