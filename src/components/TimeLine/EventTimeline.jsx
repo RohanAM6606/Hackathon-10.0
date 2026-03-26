@@ -4,13 +4,15 @@ const events = [
   {
     date: "28th March",
     title: "Registrations Begin",
-    description: "Form your duos or squads — gear up, brainstorm, and register for the challenge of innovation!",
+    description:
+      "Form your duos or squads — gear up, brainstorm, and register for the challenge of innovation!",
     side: "right",
   },
   {
     date: "11th April",
     title: "Forms Close & WhatsApp Group Access",
-    description: "Registration closes. Participants will be added to the WhatsApp group and drive link shared.",
+    description:
+      "Registration closes. Participants will be added to the WhatsApp group and drive link shared.",
     side: "left",
   },
   {
@@ -33,6 +35,7 @@ const events = [
   },
 ];
 
+// 👀 Scroll Animation Hook
 function useInView(threshold = 0.2) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -52,7 +55,21 @@ function useInView(threshold = 0.2) {
   return [ref, visible];
 }
 
-function TimelineCard({ event, index }) {
+// 📱 Responsive Hook
+function useMobile() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isMobile;
+}
+
+// 🎯 Timeline Card
+function TimelineCard({ event, index, isMobile }) {
   const [ref, visible] = useInView(0.15);
   const isRight = event.side === "right";
 
@@ -61,95 +78,88 @@ function TimelineCard({ event, index }) {
       ref={ref}
       style={{
         display: "flex",
-        justifyContent: isRight ? "flex-end" : "flex-start",
-        marginBottom: "3rem",
+        justifyContent: isMobile
+          ? "flex-start"
+          : isRight
+          ? "flex-end"
+          : "flex-start",
+        marginBottom: "2.5rem",
         opacity: visible ? 1 : 0,
         transform: visible
           ? "translateX(0)"
+          : isMobile
+          ? "translateY(40px)"
           : isRight
           ? "translateX(60px)"
           : "translateX(-60px)",
         transition: `all 0.6s ease ${index * 0.15}s`,
+        position: "relative",
       }}
     >
+      {/* Dot */}
       <div
         style={{
-          width: "45%",
+          position: "absolute",
+          left: isMobile ? "6px" : "50%",
+          transform: isMobile
+            ? "none"
+            : "translateX(-50%)",
+          top: "20px",
+          width: "14px",
+          height: "14px",
+          borderRadius: "50%",
+          background: "#00dcff",
+          boxShadow: "0 0 10px #00dcff",
+          zIndex: 2,
+        }}
+      />
+
+      {/* Card */}
+      <div
+        style={{
+          width: isMobile ? "100%" : "45%",
+          marginLeft: isMobile ? "2rem" : "0",
           background:
             "linear-gradient(135deg, rgba(0,80,200,0.25), rgba(0,20,60,0.5))",
-          backdropFilter: "blur(22px)",
-          border: "1px solid rgba(0,220,255,0.45)",
+          backdropFilter: "blur(20px)",
+          border: "1px solid rgba(0,220,255,0.4)",
           borderRadius: "16px",
-          padding: "1.8rem",
+          padding: "1.5rem",
           boxShadow:
-            "0 15px 50px rgba(0,180,255,0.25), inset 0 1px 0 rgba(255,255,255,0.1)",
+            "0 10px 40px rgba(0,180,255,0.2), inset 0 1px 0 rgba(255,255,255,0.1)",
           color: "#e0f4ff",
           position: "relative",
-          overflow: "hidden",
         }}
       >
-        {/* Inner Glow */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(120deg, rgba(0,220,255,0.15), transparent)",
-            opacity: 0.4,
-          }}
-        />
-
         {/* Date */}
         <h4
           style={{
             color: "#00dcff",
-            fontSize: "0.8rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            marginBottom: "0.6rem",
+            marginBottom: "0.5rem",
             fontWeight: "700",
           }}
         >
           {event.date}
         </h4>
 
-        {/* Title + Glow Dot */}
-        <div
+        {/* Title */}
+        <h3
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.6rem",
-            marginBottom: "0.6rem",
+            fontSize: "1.4rem",
+            fontWeight: "800",
+            marginBottom: "0.5rem",
           }}
         >
-          <span
-            style={{
-              width: 10,
-              height: 10,
-              borderRadius: "50%",
-              background: "linear-gradient(135deg, #00dcff, #0080ff)",
-              boxShadow:
-                "0 0 10px #00dcff, 0 0 20px rgba(0,220,255,0.8), 0 0 30px rgba(0,180,255,0.6)",
-            }}
-          />
-
-          <h3
-            style={{
-              fontSize: "1.6rem",
-              fontWeight: "900",
-              color: "#e6faff",
-              margin: 0,
-            }}
-          >
-            {event.title}
-          </h3>
-        </div>
+          {event.title}
+        </h3>
 
         {/* Description */}
         <p
           style={{
-            fontSize: "1rem",
-            lineHeight: "1.7",
+            fontSize: "0.95rem",
+            lineHeight: "1.6",
             color: "rgba(180,220,255,0.8)",
           }}
         >
@@ -160,48 +170,55 @@ function TimelineCard({ event, index }) {
   );
 }
 
+// 🚀 Main Component
 export default function EventTimeline() {
+  const isMobile = useMobile();
+
   return (
     <div
       style={{
         minHeight: "100vh",
         background: "#020b18",
-        padding: "4rem 2rem",
+        padding: "4rem 1.5rem",
       }}
     >
       {/* Heading */}
       <h1
         style={{
           textAlign: "center",
-          fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+          fontSize: "clamp(2.2rem, 6vw, 4rem)",
           fontWeight: "900",
-          marginBottom: "3.5rem",
+          marginBottom: "3rem",
           background: "linear-gradient(90deg, #00dcff, #4da6ff)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-          textShadow: "0 0 25px rgba(0,220,255,0.6)",
         }}
       >
         EVENT TIMELINE
       </h1>
 
       <div style={{ position: "relative", maxWidth: 900, margin: "auto" }}>
-        {/* Center Line */}
+        {/* Timeline Line */}
         <div
           style={{
             position: "absolute",
-            left: "50%",
+            left: isMobile ? "12px" : "50%",
             top: 0,
             bottom: 0,
             width: "2px",
             background: "linear-gradient(#00dcff, #0060ff)",
-            transform: "translateX(-50%)",
+            transform: isMobile ? "none" : "translateX(-50%)",
             opacity: 0.6,
           }}
         />
 
         {events.map((event, i) => (
-          <TimelineCard key={i} event={event} index={i} />
+          <TimelineCard
+            key={i}
+            event={event}
+            index={i}
+            isMobile={isMobile}
+          />
         ))}
       </div>
     </div>
