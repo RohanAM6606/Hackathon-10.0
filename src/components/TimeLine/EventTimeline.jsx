@@ -194,7 +194,7 @@ export default function EventTimeline() {
           WebkitTextFillColor: "transparent",
         }}
       >
-        EVENT TIMELINE
+        Event Timeline
       </h1>
 
       <div style={{ position: "relative", maxWidth: 900, margin: "auto" }}>

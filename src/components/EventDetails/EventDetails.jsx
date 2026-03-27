@@ -105,7 +105,7 @@ const EventDetails = () => {
               <div className="bg-[#020617] p-4 rounded-xl border border-blue-500/10 text-center">
                 <p className="text-blue-400 text-sm">Registration</p>
                 <p className="text-white font-semibold">
-                  ₹249 
+                  ₹249 Per Team
                 </p>
               </div>
 
