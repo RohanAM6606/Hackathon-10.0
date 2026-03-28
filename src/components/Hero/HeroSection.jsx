@@ -47,7 +47,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full 
           bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            <span className="text-blue-100 text-xs md:text-sm font-bold tracking-widest uppercase">
+            <span className="text-cyan-100 text-xs md:text-sm font-bold tracking-widest uppercase">
               TEAM SRM HACKATHON PRESENTS
             </span>
           </div>
