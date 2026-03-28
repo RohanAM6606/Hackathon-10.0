@@ -1,9 +1,11 @@
+import FaqSection from "../components/Faq/FaqSection"
 import HeroSection from "../components/Hero/HeroSection";
 import Sponsor from "../components/Sponsor/Sponsor";
 import Navbar from "../components/Navbar/Navbar";
 import EventDetails from "../components/EventDetails/EventDetails";
 import Domain from "../components/Domain/Domain";
 import Timeline from "../components/TimeLine/EventTimeline";
+import Registration from "../components/Registration/Registration";
 const Home = () => {
   return (
     <div>
@@ -24,6 +26,14 @@ const Home = () => {
       <div data-section="sponsor">
         <Sponsor />
       </div>
+      <div data-section="faq">
+        <FaqSection />
+      </div>
+
+      <div data-section="registration">
+      <Registration/>
+      </div>
+
     </div>
   );
 };
