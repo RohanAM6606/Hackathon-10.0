@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-
 function App() {
   return (
     <Router>
@@ -21,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; 
