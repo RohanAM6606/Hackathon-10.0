@@ -122,8 +122,7 @@ const Registration = () => {
 
         {/* HEADER */}
         <div className="text-center mb-16">
-          <Zap className="w-16 h-16 text-cyan-300 mx-auto animate-pulse mb-4" />
-
+       
           <h1 className="text-6xl font-extrabold bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
             HACKATHON 10.0
           </h1>

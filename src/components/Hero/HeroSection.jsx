@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import GridBackground from "../ui/LightWavesBackground.jsx";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+
   const targetDate = new Date("2026-04-17T00:00:00").getTime();
   const [timeLeft, setTimeLeft] = useState(getTime());
 
@@ -29,20 +32,18 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-screen min-h-screen pt-24 overflow-hidden bg-[#000511]">
-
       {/* Background */}
       <div className="absolute inset-0">
         <GridBackground />
       </div>
 
-      {/* Overlay for depth */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/10 to-black/60"></div>
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-6 min-h-[calc(100vh-96px)] space-y-12">
 
         {/* Header */}
         <div className="flex flex-col items-center space-y-4">
-
           <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full 
           bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
@@ -78,7 +79,6 @@ export default function HeroSection() {
               flex flex-col items-center justify-center
               relative overflow-hidden"
             >
-              {/* Inner glow */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30"></div>
 
               <div className="text-4xl md:text-5xl font-bold text-white z-10">
@@ -93,11 +93,14 @@ export default function HeroSection() {
 
         {/* CTA */}
         {isOpen ? (
-          <button className="mt-10 px-10 py-4 rounded-full 
-          bg-white/10 backdrop-blur-xl border border-white/20
-          text-white font-semibold text-lg
-          shadow-[0_0_20px_rgba(56,189,248,0.6)]
-          hover:scale-105 hover:bg-white/20 transition-all duration-300">
+          <button
+            onClick={() => navigate("/register")}
+            className="mt-10 px-10 py-4 rounded-full 
+            bg-white/10 backdrop-blur-xl border border-white/20
+            text-white font-semibold text-lg
+            shadow-[0_0_20px_rgba(56,189,248,0.6)]
+            hover:scale-105 hover:bg-white/20 transition-all duration-300"
+          >
             Register Now
           </button>
         ) : (
