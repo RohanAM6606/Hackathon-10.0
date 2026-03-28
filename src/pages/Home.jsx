@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import EventDetails from "../components/EventDetails/EventDetails";
 import Domain from "../components/Domain/Domain";
 import Timeline from "../components/TimeLine/EventTimeline";
-import Registration from "../components/Registration/Registration";
+
 const Home = () => {
   return (
     <div>
@@ -30,10 +30,7 @@ const Home = () => {
         <FaqSection />
       </div>
 
-      <div data-section="registration">
-      <Registration/>
-      </div>
-
+      
     </div>
   );
 };
