@@ -103,7 +103,11 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item)}
-                className="block w-full text-left px-4 py-3 rounded-xl text-gray-300 hover:text-white hover:bg-white/10"
+                className={`block w-full text-left px-4 py-3 rounded-xl font-semibold transition ${
+                  activeSection === item.id
+                    ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white"
+                    : "text-gray-300 hover:text-white hover:bg-white/10"
+                }`}
               >
                 {item.label}
               </button>
