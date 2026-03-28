@@ -32,8 +32,8 @@ const Registration = () => {
       <Navbar />
 
       <div className="max-w-6xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <h1 className="text-6xl font-extrabold text-cyan-300">
+        <div className="text-center mb-10 md:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-cyan-300">
             HACKATHON 10.0
           </h1>
           <p className="text-blue-200 mt-4">
