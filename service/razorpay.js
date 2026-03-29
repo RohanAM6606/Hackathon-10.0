@@ -72,7 +72,7 @@ export const initiatePayment = async ({ formData, onSuccess, onOpen, onDismiss }
           if (verifyData.success) {
             // ✅ VERIFIED PAYMENT — SAFE
             
-            onSuccess(response);
+            onSuccess(response); //check
           } else {
             alert("Payment verification failed. Please contact support.");
           }
