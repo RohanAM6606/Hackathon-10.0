@@ -2,28 +2,50 @@ import React from "react";
 
 const EventDetails = () => {
   return (
-    <div className="min-h-screen w-screen bg-[#020617] flex flex-col items-center justify-center px-6 py-16">
+    <section className="relative min-h-screen w-screen overflow-hidden bg-[#020617] px-4 sm:px-6 py-16 sm:py-20">
+      <div className="pointer-events-none absolute -top-20 -left-20 h-72 w-72 rounded-full bg-cyan-400/20 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-20 h-80 w-80 rounded-full bg-indigo-500/20 blur-[120px]" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(56,189,248,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.14) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
 
       {/* Heading */}
-      <h1 className="text-5xl md:text-6xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-        Event Details
-      </h1>
+      <div className="text-center mb-10 sm:mb-14">
+        <p className="inline-flex items-center px-4 py-1.5 rounded-full border border-cyan-300/35 bg-cyan-400/10 text-cyan-100 text-[11px] sm:text-xs tracking-[0.24em] uppercase mb-4">
+          Competition Overview
+        </p>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-3 bg-linear-to-r from-cyan-200 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+          Event Details
+        </h1>
+        <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
+          Everything you need before stepping into HACKATHON 10.0.
+        </p>
+      </div>
 
       {/* Grid */}
-      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
 
         {/* LEFT CARD */}
-        <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-10 shadow-[0_0_60px_rgba(59,130,246,0.15)]">
+        <div className="relative overflow-hidden rounded-2xl border border-cyan-300/25 bg-linear-to-br from-slate-900/85 via-blue-950/65 to-slate-900/80 backdrop-blur-2xl p-6 sm:p-8 md:p-10 shadow-[0_22px_55px_rgba(2,8,23,0.55)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(103,232,249,0.18),transparent_35%),radial-gradient(circle_at_100%_80%,rgba(99,102,241,0.16),transparent_45%)]" />
+          <div className="relative z-10">
 
-          <h2 className="text-4xl font-bold text-center text-white">
+          <h2 className="text-3xl sm:text-4xl font-black text-center text-white tracking-tight">
             HACKATHON 10.0
           </h2>
 
-          <p className="text-blue-300 text-center mt-2">
+          <p className="text-cyan-200 text-center mt-2 text-sm sm:text-base">
             From concept to creation in 36 hours
           </p>
 
-          <p className="text-gray-300 mt-6 text-center leading-relaxed">
+          <p className="text-slate-300 mt-6 text-center leading-relaxed text-sm sm:text-base">
             The battlefield of code is ready. Step in, come together, and turn
             bold ideas into real-world solutions. In just 36 hours, brainstorm,
             build, and bring concepts to life, driven by creativity,
@@ -31,26 +53,27 @@ const EventDetails = () => {
           </p>
 
           {/* Divider */}
-          <div className="border-t border-blue-500/20 my-8"></div>
+          <div className="border-t border-cyan-300/20 my-7 sm:my-8"></div>
 
           {/* Bottom Stats */}
-          <div className="grid grid-cols-3 text-center">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 text-center">
 
-            <div>
-              <p className="text-3xl font-bold text-blue-400">1L+</p>
-              <p className="text-gray-400 text-sm mt-1">Prize Pool</p>
+            <div className="rounded-xl border border-cyan-300/20 bg-slate-950/35 py-3 sm:py-4">
+              <p className="text-2xl sm:text-3xl font-bold text-cyan-300">1L+</p>
+              <p className="text-slate-400 text-[11px] sm:text-sm mt-1">Prize Pool</p>
             </div>
 
-            <div>
-              <p className="text-3xl font-bold text-blue-400">36 hrs</p>
-              <p className="text-gray-400 text-sm mt-1">Duration</p>
+            <div className="rounded-xl border border-cyan-300/20 bg-slate-950/35 py-3 sm:py-4">
+              <p className="text-2xl sm:text-3xl font-bold text-cyan-300">36 hrs</p>
+              <p className="text-slate-400 text-[11px] sm:text-sm mt-1">Duration</p>
             </div>
 
-            <div>
-              <p className="text-3xl font-bold text-blue-400">2-4</p>
-              <p className="text-gray-400 text-sm mt-1">Team Size</p>
+            <div className="rounded-xl border border-cyan-300/20 bg-slate-950/35 py-3 sm:py-4">
+              <p className="text-2xl sm:text-3xl font-bold text-cyan-300">2-4</p>
+              <p className="text-slate-400 text-[11px] sm:text-sm mt-1">Team Size</p>
             </div>
 
+          </div>
           </div>
         </div>
 
@@ -58,63 +81,70 @@ const EventDetails = () => {
         <div className="space-y-6">
 
           {/* Guidelines */}
-          <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-6 shadow-[0_0_40px_rgba(59,130,246,0.15)]">
+          <div className="relative overflow-hidden rounded-2xl border border-cyan-300/25 bg-linear-to-br from-slate-900/80 via-blue-950/55 to-slate-900/75 backdrop-blur-2xl p-5 sm:p-6 shadow-[0_16px_40px_rgba(2,8,23,0.52)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(56,189,248,0.14),transparent_38%)]" />
+            <div className="relative z-10">
 
-            <h3 className="text-xl font-semibold text-blue-300 mb-4">
+            <h3 className="text-xl font-semibold text-cyan-200 mb-4 tracking-wide">
               ⚡ Event Guidelines
             </h3>
 
-            <ul className="text-gray-300 space-y-2">
-              <li>• Open to all students</li>
-              <li>• Original ideas only</li>
-              <li>• Prototype Optional</li>
-              <li>• Final pitch to judges</li>
+            <ul className="text-slate-300 space-y-2.5 text-sm sm:text-base">
+              <li className="flex items-start gap-2"><span className="text-cyan-300">•</span><span>Open to all students</span></li>
+              <li className="flex items-start gap-2"><span className="text-cyan-300">•</span><span>Original ideas only</span></li>
+              <li className="flex items-start gap-2"><span className="text-cyan-300">•</span><span>Prototype Optional</span></li>
+              <li className="flex items-start gap-2"><span className="text-cyan-300">•</span><span>Final pitch to judges</span></li>
             </ul>
+            </div>
           </div>
 
           {/* Snapshot */}
-          <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-6 shadow-[0_0_40px_rgba(59,130,246,0.15)]">
+          <div className="relative overflow-hidden rounded-2xl border border-cyan-300/25 bg-linear-to-br from-slate-900/80 via-blue-950/55 to-slate-900/75 backdrop-blur-2xl p-5 sm:p-6 shadow-[0_16px_40px_rgba(2,8,23,0.52)]">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(99,102,241,0.14),transparent_42%)]" />
+            <div className="relative z-10">
 
-            <h3 className="text-xl font-semibold text-blue-300 mb-4">
+            <h3 className="text-xl font-semibold text-cyan-200 mb-4 tracking-wide">
               🏆 Event Snapshot
             </h3>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
 
-              <div className="bg-[#020617] p-4 rounded-xl border border-blue-500/10 text-center">
-                <p className="text-blue-400 text-sm">Venue</p>
-                <p className="text-white font-semibold">
+              <div className="bg-slate-950/55 p-4 rounded-xl border border-cyan-300/15 text-center">
+                <p className="text-cyan-300 text-xs sm:text-sm uppercase tracking-[0.18em]">Venue</p>
+                <p className="text-white font-semibold mt-1">
                   Mini Hall 2, SRMIST
                 </p>
               </div>
 
-              <div className="bg-[#020617] p-4 rounded-xl border border-blue-500/10 text-center">
-                <p className="text-blue-400 text-sm">Date</p>
-                <p className="text-white font-semibold">
+              <div className="bg-slate-950/55 p-4 rounded-xl border border-cyan-300/15 text-center">
+                <p className="text-cyan-300 text-xs sm:text-sm uppercase tracking-[0.18em]">Date</p>
+                <p className="text-white font-semibold mt-1">
                   April 17 - 18, 2026
                 </p>
               </div>
 
-              <div className="bg-[#020617] p-4 rounded-xl border border-blue-500/10 text-center">
-                <p className="text-blue-400 text-sm">Time</p>
-                <p className="text-white font-semibold">
+              <div className="bg-slate-950/55 p-4 rounded-xl border border-cyan-300/15 text-center">
+                <p className="text-cyan-300 text-xs sm:text-sm uppercase tracking-[0.18em]">Time</p>
+                <p className="text-white font-semibold mt-1">
                   9 AM Onwards
                 </p>
               </div>
 
-              <div className="bg-[#020617] p-4 rounded-xl border border-blue-500/10 text-center">
-                <p className="text-blue-400 text-sm">Registration</p>
-                <p className="text-white font-semibold">
-                  ₹249 Per Team
+              <div className="bg-slate-950/55 p-4 rounded-xl border border-cyan-300/15 text-center">
+                <p className="text-cyan-300 text-xs sm:text-sm uppercase tracking-[0.18em]">Registration</p>
+                <p className="text-white font-semibold mt-1">
+                  ₹250 Per Team
                 </p>
               </div>
 
+            </div>
             </div>
           </div>
 
         </div>
       </div>
-    </div>
+      </div>
+    </section>
   );
 };
 

@@ -83,16 +83,16 @@ function TimelineCard({ event, index, isMobile }) {
           : isRight
           ? "flex-end"
           : "flex-start",
-        marginBottom: "2.5rem",
+        marginBottom: isMobile ? "1.5rem" : "2.2rem",
         opacity: visible ? 1 : 0,
         transform: visible
           ? "translateX(0)"
           : isMobile
-          ? "translateY(40px)"
+          ? "translateY(26px)"
           : isRight
           ? "translateX(60px)"
           : "translateX(-60px)",
-        transition: `all 0.6s ease ${index * 0.15}s`,
+        transition: `all 0.62s cubic-bezier(0.22, 1, 0.36, 1) ${index * 0.12}s`,
         position: "relative",
       }}
     >
@@ -100,16 +100,32 @@ function TimelineCard({ event, index, isMobile }) {
       <div
         style={{
           position: "absolute",
-          left: isMobile ? "6px" : "50%",
+          left: isMobile ? "8px" : "50%",
           transform: isMobile
             ? "none"
             : "translateX(-50%)",
-          top: "20px",
-          width: "14px",
-          height: "14px",
+          top: "28px",
+          width: "16px",
+          height: "16px",
           borderRadius: "50%",
-          background: "#00dcff",
-          boxShadow: "0 0 10px #00dcff",
+          border: "2px solid rgba(165, 243, 252, 0.9)",
+          background: "radial-gradient(circle, #22d3ee 20%, #0284c7 90%)",
+          boxShadow: "0 0 18px rgba(34, 211, 238, 0.7)",
+          zIndex: 3,
+        }}
+      />
+
+      <div
+        style={{
+          position: "absolute",
+          left: isMobile ? "6px" : "50%",
+          transform: isMobile ? "none" : "translateX(-50%)",
+          top: "26px",
+          width: "20px",
+          height: "20px",
+          borderRadius: "50%",
+          background: "rgba(34, 211, 238, 0.25)",
+          filter: "blur(3px)",
           zIndex: 2,
         }}
       />
@@ -117,28 +133,63 @@ function TimelineCard({ event, index, isMobile }) {
       {/* Card */}
       <div
         style={{
-          width: isMobile ? "100%" : "45%",
-          marginLeft: isMobile ? "2rem" : "0",
+          width: isMobile ? "100%" : "46%",
+          marginLeft: isMobile ? "2.15rem" : "0",
           background:
-            "linear-gradient(135deg, rgba(0,80,200,0.25), rgba(0,20,60,0.5))",
-          backdropFilter: "blur(20px)",
-          border: "1px solid rgba(0,220,255,0.4)",
-          borderRadius: "16px",
-          padding: "1.5rem",
+            "linear-gradient(145deg, rgba(8, 24, 48, 0.82), rgba(13, 38, 68, 0.62))",
+          backdropFilter: "blur(22px)",
+          border: "1px solid rgba(125, 211, 252, 0.28)",
+          borderRadius: "18px",
+          padding: isMobile ? "1.05rem" : "1.3rem 1.4rem",
           boxShadow:
-            "0 10px 40px rgba(0,180,255,0.2), inset 0 1px 0 rgba(255,255,255,0.1)",
-          color: "#e0f4ff",
+            "0 14px 38px rgba(2, 8, 23, 0.5), inset 0 1px 0 rgba(207, 250, 254, 0.18), inset 0 -1px 0 rgba(14, 165, 233, 0.25)",
+          color: "#e6f7ff",
           position: "relative",
+          overflow: "hidden",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            pointerEvents: "none",
+            background:
+              "radial-gradient(circle at 10% 0%, rgba(103, 232, 249, 0.16), transparent 38%), radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.14), transparent 44%)",
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            top: "12px",
+            right: "12px",
+            width: "28px",
+            height: "28px",
+            borderRadius: "999px",
+            display: "grid",
+            placeItems: "center",
+            fontSize: "0.72rem",
+            fontWeight: 800,
+            color: "#a5f3fc",
+            border: "1px solid rgba(125, 211, 252, 0.35)",
+            background: "rgba(8, 27, 54, 0.6)",
+            zIndex: 2,
+          }}
+        >
+          {String(index + 1).padStart(2, "0")}
+        </div>
+
         {/* Date */}
         <h4
           style={{
-            color: "#00dcff",
-            fontSize: "0.75rem",
-            letterSpacing: "0.15em",
+            color: "#67e8f9",
+            fontSize: "0.7rem",
+            letterSpacing: "0.2em",
             marginBottom: "0.5rem",
             fontWeight: "700",
+            textTransform: "uppercase",
+            position: "relative",
+            zIndex: 2,
           }}
         >
           {event.date}
@@ -147,9 +198,12 @@ function TimelineCard({ event, index, isMobile }) {
         {/* Title */}
         <h3
           style={{
-            fontSize: "1.4rem",
+            fontSize: isMobile ? "1.15rem" : "1.32rem",
             fontWeight: "800",
-            marginBottom: "0.5rem",
+            marginBottom: "0.45rem",
+            lineHeight: 1.25,
+            position: "relative",
+            zIndex: 2,
           }}
         >
           {event.title}
@@ -158,9 +212,11 @@ function TimelineCard({ event, index, isMobile }) {
         {/* Description */}
         <p
           style={{
-            fontSize: "0.95rem",
-            lineHeight: "1.6",
-            color: "rgba(180,220,255,0.8)",
+            fontSize: isMobile ? "0.9rem" : "0.94rem",
+            lineHeight: "1.62",
+            color: "rgba(186, 230, 253, 0.82)",
+            position: "relative",
+            zIndex: 2,
           }}
         >
           {event.description}
@@ -175,40 +231,81 @@ export default function EventTimeline() {
   const isMobile = useMobile();
 
   return (
-    <div
+    <section
       style={{
         minHeight: "100vh",
-        background: "#020b18",
-        padding: "4rem 1.5rem",
+        background: "linear-gradient(180deg, #020b18 0%, #030d1f 100%)",
+        padding: isMobile ? "3.25rem 0.9rem" : "4.3rem 1.5rem",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      {/* Heading */}
-      <h1
+      <div
         style={{
-          textAlign: "center",
-          fontSize: "clamp(2.2rem, 6vw, 4rem)",
-          fontWeight: "900",
-          marginBottom: "3rem",
-          background: "linear-gradient(90deg, #00dcff, #4da6ff)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          position: "absolute",
+          top: "-120px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: isMobile ? "320px" : "560px",
+          height: isMobile ? "320px" : "560px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(34, 211, 238, 0.22), rgba(2, 132, 199, 0) 65%)",
+          pointerEvents: "none",
         }}
-      >
-        Event Timeline
-      </h1>
+      />
 
-      <div style={{ position: "relative", maxWidth: 900, margin: "auto" }}>
+      {/* Heading */}
+      <div style={{ textAlign: "center", position: "relative", zIndex: 1, marginBottom: isMobile ? "2rem" : "2.8rem" }}>
+        <p
+          style={{
+            display: "inline-flex",
+            padding: "0.38rem 0.8rem",
+            borderRadius: "999px",
+            border: "1px solid rgba(125, 211, 252, 0.35)",
+            background: "rgba(8, 27, 54, 0.5)",
+            color: "#a5f3fc",
+            fontSize: "0.68rem",
+            letterSpacing: "0.24em",
+            textTransform: "uppercase",
+            marginBottom: "0.8rem",
+            fontWeight: 700,
+          }}
+        >
+          Key Milestones
+        </p>
+        <h1
+          style={{
+            textAlign: "center",
+            fontSize: "clamp(2rem, 6vw, 4rem)",
+            fontWeight: "900",
+            marginBottom: "0.65rem",
+            background: "linear-gradient(90deg, #a5f3fc, #60a5fa, #818cf8)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            letterSpacing: "0.01em",
+          }}
+        >
+          Event Timeline
+        </h1>
+        <p style={{ color: "rgba(186, 230, 253, 0.8)", fontSize: isMobile ? "0.86rem" : "0.98rem" }}>
+          Track each major stage from registrations to final build day.
+        </p>
+      </div>
+
+      <div style={{ position: "relative", maxWidth: 940, margin: "auto", zIndex: 1 }}>
         {/* Timeline Line */}
         <div
           style={{
             position: "absolute",
-            left: isMobile ? "12px" : "50%",
+            left: isMobile ? "15px" : "50%",
             top: 0,
             bottom: 0,
-            width: "2px",
-            background: "linear-gradient(#00dcff, #0060ff)",
+            width: "3px",
+            borderRadius: "999px",
+            background: "linear-gradient(180deg, rgba(34, 211, 238, 0.9), rgba(37, 99, 235, 0.7), rgba(99, 102, 241, 0.8))",
             transform: isMobile ? "none" : "translateX(-50%)",
-            opacity: 0.6,
+            opacity: 0.75,
+            boxShadow: "0 0 18px rgba(34, 211, 238, 0.45)",
           }}
         />
 
@@ -221,6 +318,6 @@ export default function EventTimeline() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }

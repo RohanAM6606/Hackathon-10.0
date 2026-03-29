@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Is there any registration fee?',
-    a: 'Yes, there is a registration fee of ₹249 for all participants.'
+    a: 'Yes, there is a registration fee of ₹250 for all participants.'
   },
   {
     q: "What if I'm a beginner?",
@@ -38,20 +38,34 @@ const FaqSection = () => {
 
   return (
     <motion.section
-      className="pb-32"
+      className="relative overflow-hidden pb-24 sm:pb-32"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
     >
-      <div className="relative z-10 max-w-4xl mx-auto pt-32 px-6">
+      <div className="pointer-events-none absolute -top-20 -left-16 h-72 w-72 rounded-full bg-cyan-400/20 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 -right-16 h-80 w-80 rounded-full bg-indigo-500/20 blur-[130px]" />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.1]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(56,189,248,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.14) 1px, transparent 1px)",
+          backgroundSize: "46px 46px",
+        }}
+      />
+
+      <div className="relative z-10 max-w-5xl mx-auto pt-24 sm:pt-32 px-4 sm:px-6">
 
         {/* HEADER */}
         <div className="mb-14 text-center flex flex-col items-center">
+          <p className="inline-flex px-4 py-1.5 rounded-full border border-cyan-300/35 bg-cyan-300/10 text-cyan-100 text-[11px] sm:text-xs tracking-[0.24em] uppercase mb-4">
+            Need Help?
+          </p>
           <h2 className="
-            text-4xl md:text-5xl font-extrabold
+            text-4xl md:text-5xl font-black
             tracking-tight
-          bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-700            
+          bg-linear-to-r from-cyan-200 via-sky-300 to-indigo-300
           bg-clip-text text-transparent
           ">
             Frequently Asked Questions
@@ -60,7 +74,7 @@ const FaqSection = () => {
           <p className="
             mt-3 max-w-2xl
             text-sm md:text-base
-            text-slate-400
+            text-slate-300
             leading-relaxed
           ">
             Everything you need to know before entering Hackathon 10.0
@@ -68,7 +82,7 @@ const FaqSection = () => {
         </div>
 
         {/* FAQ LIST */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -85,15 +99,15 @@ const FaqSection = () => {
                 </h3>
 
                 <ChevronDown
-                  className={`h-5 w-5 text-slate-400 transition-transform duration-300 ${
+                  className={`h-5 w-5 text-cyan-200/80 transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                 />
               </div>
 
-<p className="faq-answer">
-  {faq.a}
-</p>
+              <p className="faq-answer">
+                {faq.a}
+              </p>
             </motion.div>
           ))}
         </div>
