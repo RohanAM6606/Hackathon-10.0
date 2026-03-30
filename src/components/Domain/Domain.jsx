@@ -1,22 +1,56 @@
 import { useState } from "react";
 
+import health from "../../assets/images/health.png";
+import iot from "../../assets/images/ir.png";
+import ai from "../../assets/images/ai.png";
+import ir from "../../assets/images/ir.png";
+import socio from "../../assets/images/socio.png";
+import appai from "../../assets/images/appai.png";
+import newIcon from "../../assets/images/new.png";
+
 const domains = [
-  { id: 1, title: "", desc: "" },
-  { id: 2, title: "", desc: "" },
-  { id: 3, title: "", desc: "" },
-  { id: 4, title: "", desc: "" },
-  { id: 5, title: "", desc: "" },
+  {
+    id: 1,
+    title: "HealthTech",
+    desc: "Build impactful healthcare solutions such as AI diagnostics, telemedicine platforms, wearable monitoring systems, and digital health assistants.",
+  },
+  {
+    id: 2,
+    title: "Scalable Systems",
+    desc: "Design and build highly scalable, reliable, and distributed systems capable of handling large-scale data, traffic, and real-time processing.",
+  },
+  {
+    id: 3,
+    title: "Artificial Intelligence",
+    desc: "Create intelligent applications using machine learning, deep learning, NLP, and computer vision to solve complex real-world challenges.",
+  },
+  {
+    id: 4,
+    title: "Innovation & Research",
+    desc: "Explore cutting-edge technologies, prototype experimental ideas, and develop futuristic solutions driven by strong research and creativity.",
+  },
+  {
+    id: 5,
+    title: "Applied AI (LLMs)",
+    desc: "Leverage large language models to build chatbots, AI copilots, automation tools, and intelligent assistants for real-world applications.",
+  },
+  {
+    id: 6,
+    title: "SocioSphere",
+    desc: "Develop solutions addressing societal challenges in education, sustainability, accessibility, public health, and community development.",
+  },
 ];
 
 const config = [
-  { number: "01", accent: "#3b82f6", glow: "rgba(59,130,246,0.18)", icon: "⬡" },
-  { number: "02", accent: "#60a5fa", glow: "rgba(96,165,250,0.18)", icon: "◈" },
-  { number: "03", accent: "#38bdf8", glow: "rgba(56,189,248,0.18)", icon: "◎" },
-  { number: "04", accent: "#0ea5e9", glow: "rgba(14,165,233,0.18)", icon: "◇" },
-  { number: "05", accent: "#0284c7", glow: "rgba(2,132,199,0.18)", icon: "△" },
+  { accent: "#3b82f6", glow: "rgba(59,130,246,0.18)", icon: health },
+  { accent: "#60a5fa", glow: "rgba(96,165,250,0.18)", icon: iot },
+  { accent: "#38bdf8", glow: "rgba(56,189,248,0.18)", icon: ai },
+  { accent: "#0ea5e9", glow: "rgba(14,165,233,0.18)", icon: newIcon },
+  { accent: "#6366f1", glow: "rgba(99,102,241,0.18)", icon: appai },
+  { accent: "#0284c7", glow: "rgba(2,132,199,0.18)", icon: socio },
 ];
 
-const DomainCard = ({ domain, cfg, gridArea }) => {
+const DomainCard = ({ domain, cfg }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -24,98 +58,57 @@ const DomainCard = ({ domain, cfg, gridArea }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        gridArea,
         position: "relative",
-        padding: gridArea === "c5" ? "48px" : "28px",
+        padding: "32px",
         border: `1px solid ${hovered ? cfg.accent : "rgba(59,130,246,0.2)"}`,
-        borderRadius: "16px",
+        borderRadius: "18px",
         background: hovered
           ? `linear-gradient(135deg, #020617 60%, ${cfg.glow})`
           : "#020617",
-        overflow: "hidden",
         transition: "all 0.3s ease",
-        transform: hovered ? "translateY(-5px)" : "translateY(0)",
-        boxShadow: hovered ? `0 12px 30px ${cfg.glow}` : "none",
-        cursor: "default",
+        transform: hovered ? "translateY(-6px)" : "translateY(0)",
+        boxShadow: hovered ? `0 15px 35px ${cfg.glow}` : "none",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-        minHeight: gridArea === "c5" ? "160px" : "auto",
+        alignItems: "center",
+        textAlign: "center",
       }}
     >
-      {/* Glow orb */}
       <div
         style={{
           position: "absolute",
           top: "-30px",
           right: "-30px",
-          width: "130px",
-          height: "130px",
+          width: "140px",
+          height: "140px",
           borderRadius: "50%",
           background: cfg.glow,
-          filter: "blur(45px)",
-          opacity: hovered ? 1 : 0.35,
-          transition: "opacity 0.3s",
-          pointerEvents: "none",
+          filter: "blur(50px)",
+          opacity: hovered ? 1 : 0.3,
         }}
       />
 
-      {/* Top row */}
-      <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
-        <span
-          style={{
-            fontSize: "11px",
-            fontWeight: "700",
-            letterSpacing: "2px",
-            color: cfg.accent,
-            background: "rgba(59,130,246,0.1)",
-            border: `1px solid ${cfg.accent}44`,
-            borderRadius: "8px",
-            padding: "3px 10px",
-          }}
-        >
-          {cfg.number}
-        </span>
+      <img
+        src={cfg.icon}
+        alt="icon"
+        style={{
+          width: "90px",
+          height: "90px",
+          marginBottom: "20px",
+          transform: hovered ? "scale(1.15)" : "scale(1)",
+          transition: "0.3s",
+          filter: hovered ? "drop-shadow(0 0 12px #3b82f6)" : "none",
+        }}
+      />
 
-        <span
-          style={{
-            fontSize: "26px",
-            color: cfg.accent,
-            opacity: hovered ? 1 : 0.25,
-            transition: "0.3s",
-            transform: hovered ? "scale(1.2) rotate(10deg)" : "none",
-          }}
-        >
-          {cfg.icon}
-        </span>
-      </div>
+      <h2 style={{ color: "#e2e8f0", fontSize: "22px", marginBottom: "10px" }}>
+        {domain.title}
+      </h2>
 
-      {/* Content */}
-      <div style={{ marginTop: gridArea === "c5" ? "0" : "20px" }}>
-        <h2
-          style={{
-            fontSize: gridArea === "c5" ? "28px" : "18px",
-            fontWeight: "600",
-            color: domain.title ? "#e2e8f0" : `${cfg.accent}55`,
-            marginBottom: "6px",
-          }}
-        >
-          {domain.title || "Domain Name"}
-        </h2>
+      <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: "1.6" }}>
+        {domain.desc}
+      </p>
 
-        <p
-          style={{
-            fontSize: gridArea === "c5" ? "16px" : "13px",
-            color: domain.desc ? "#94a3b8" : "rgba(59,130,246,0.3)",
-            lineHeight: "1.6",
-          }}
-        >
-          {domain.desc || "Description coming soon..."}
-        </p>
-      </div>
-
-      {/* Bottom bar */}
       <div
         style={{
           position: "absolute",
@@ -124,8 +117,6 @@ const DomainCard = ({ domain, cfg, gridArea }) => {
           right: 0,
           height: hovered ? "3px" : "2px",
           background: `linear-gradient(90deg, ${cfg.accent}, transparent)`,
-          borderRadius: "0 0 16px 16px",
-          transition: "height 0.3s",
         }}
       />
     </div>
@@ -136,98 +127,56 @@ const Domain = () => {
   return (
     <>
       <style>{`
-        :root {
-          --bg: #020617;
-          --text: #94a3b8;
-          --text-h: #e2e8f0;
-          --border: rgba(59,130,246,0.2);
-          --accent: #3b82f6;
-          --accent-bg: rgba(59,130,246,0.1);
-          --accent-border: rgba(59,130,246,0.3);
-        }
-
         body {
           background: radial-gradient(circle at top, #0f172a, #020617);
         }
 
         #domains-wrapper {
           padding: 64px 32px;
-          border-top: 1px solid var(--border);
           text-align: center;
         }
 
         #domains-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-template-areas:
-            "c1 c2"
-            "c3 c4"
-            "c5 c5";
-          gap: 14px;
-          max-width: 1062px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          max-width: 1200px;
           margin: 0 auto;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 1024px) {
+          #domains-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
           #domains-grid {
             grid-template-columns: 1fr;
-            grid-template-areas:
-              "c1"
-              "c2"
-              "c3"
-              "c4"
-              "c5";
           }
         }
       `}</style>
 
       <div id="domains-wrapper">
-        {/* Header */}
-        <div style={{ marginBottom: "40px" }}>
-          <span
-            style={{
-              fontSize: "11px",
-              fontWeight: "700",
-              letterSpacing: "2.5px",
-              textTransform: "uppercase",
-              color: "#3b82f6",
-              background: "rgba(59,130,246,0.1)",
-              border: "1px solid rgba(59,130,246,0.3)",
-              borderRadius: "999px",
-              padding: "5px 16px",
-              marginBottom: "20px",
-              display: "inline-block",
-            }}
-          >
-            ✦ Hackathon Tracks
-          </span>
+        <h1
+          style={{
+            fontSize: "64px",
+            marginBottom: "12px",
+            background: "linear-gradient(135deg, #e2e8f0, #3b82f6)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Domains
+        </h1>
 
-          <h1
-            style={{
-              fontSize: "72px",
-              marginBottom: "12px",
-              background: "linear-gradient(135deg, #e2e8f0, #3b82f6)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Domains
-          </h1>
+        <p style={{ color: "#94a3b8", marginBottom: "40px" }}>
+          Choose your domain. Build something impactful.
+        </p>
 
-          <p style={{ color: "#94a3b8", fontSize: "18px" }}>
-            Pick your domain. Build something extraordinary.
-          </p>
-        </div>
-
-        {/* Cards */}
         <div id="domains-grid">
           {domains.map((d, i) => (
-            <DomainCard
-              key={d.id}
-              domain={d}
-              cfg={config[i]}
-              gridArea={`c${i + 1}`}
-            />
+            <DomainCard key={d.id} domain={d} cfg={config[i]} />
           ))}
         </div>
       </div>
