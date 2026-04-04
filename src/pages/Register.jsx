@@ -315,7 +315,7 @@ const Registration = () => {
               paymentId: paymentResponse.razorpay_payment_id,
               orderId: paymentResponse.razorpay_order_id || null,
               signature: paymentResponse.razorpay_signature || null,
-              amount: 156,
+              amount: 293,
               currency: "INR",
               status: "success",
               timestamp: new Date().toISOString(),

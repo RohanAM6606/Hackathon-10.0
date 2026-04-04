@@ -133,7 +133,7 @@ const EventDetails = () => {
               <div className="bg-slate-950/55 p-4 rounded-xl border border-cyan-300/15 text-center">
                 <p className="text-cyan-300 text-xs sm:text-sm uppercase tracking-[0.18em]">Registration</p>
                 <p className="text-white font-semibold mt-1">
-                  ₹250 Per Team
+                  ₹300 Per Team
                 </p>
               </div>
 

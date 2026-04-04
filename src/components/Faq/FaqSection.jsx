@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Is there any registration fee?',
-    a: 'Yes, there is a registration fee of ₹250 for all participants.'
+    a: 'Yes, there is a registration fee of ₹300 for all participants.'
   },
   {
     q: "What if I'm a beginner?",

@@ -29,11 +29,9 @@ export const initiatePayment = async ({ formData, onSuccess, onOpen, onDismiss }
       currency: "INR",
       order_id: order.id,
       name: "Hackathon-10.0 Registration",
-      description: "Registration: ₹250 | Platform Fee: ₹6",
+      description: "Registration: ₹300",
       notes: {
-        registration_fee: "₹250",
-        platform_fee: "₹6",
-        total: "₹256"
+        registration_fee: "₹300",
       },
       prefill: {
         name: formData.leaderName,
