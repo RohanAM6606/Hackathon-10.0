@@ -58,6 +58,21 @@ export default function Sponsor() {
   return (
     <section className="relative w-screen min-h-screen py-16 sm:py-24 px-4 sm:px-6 overflow-hidden bg-[#000411]">
       <div className="relative z-10 max-w-7xl mx-auto pl-0 md:pl-8 lg:pl-12">
+        {/* HEADING AND SUBHEADING */}
+        <div className="space-y-4 max-w-3xl mx-auto mb-16 text-center flex flex-col items-center w-full">
+          <p className="inline-flex px-4 py-1.5 rounded-full border border-cyan-500/30 bg-transparent text-cyan-200 text-[11px] sm:text-xs tracking-[0.24em] uppercase">
+            Partnerships
+          </p>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-sans tracking-tight font-semibold">
+            <span className="bg-gradient-to-r from-cyan-200 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+              SPONSORS
+            </span>
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-lg md:text-xl font-light max-w-2xl mx-auto">
+            We have partnered with some incredible sponsors to elevate your hackathon experience
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 place-items-start">
           {/* Card 1 */}
           <div className="w-full max-w-[360px] h-auto min-h-[340px] rounded-[1.25rem] border border-indigo-400/20 bg-gradient-to-b from-[#111a3b] to-[#0a1128] flex flex-col items-center px-8 py-10 shadow-[0_4px_40px_rgba(30,58,138,0.2)] transition-transform duration-300 hover:-translate-y-1">
