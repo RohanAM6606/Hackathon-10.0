@@ -43,7 +43,7 @@ export default function HeroSection() {
     return () => clearInterval(badgeTimer);
   }, [rotatingBadges.length]);
 
-  const isOpen = timeLeft.diff > 0;
+  const isOpen = false; // Registration closed
   const countdownItems = [
     { label: "Days", value: timeLeft.days },
     { label: "Hours", value: timeLeft.hours },
@@ -123,9 +123,11 @@ export default function HeroSection() {
             <span className="relative z-10">Register Now</span>
           </button>
         ) : (
-          <div className="mt-4 text-slate-400 font-semibold">
-            Registration Closed
-          </div>
+          <button
+            className="hero-cta group -mt-2 sm:mt-1 cursor-not-allowed opacity-90"
+          >
+            <span className="relative z-10">Registration closed</span>
+          </button>
         )}
       </div>
 
