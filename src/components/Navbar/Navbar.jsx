@@ -21,7 +21,6 @@ const Navbar = () => {
     { id: "home", label: "Home" },
     { id: "domain", label: "About" },
     { id: "timeline", label: "Timeline" },
-    { id: "register", label: "Register" },
   ];
 
   const handleNavClick = (item) => {
@@ -91,6 +90,9 @@ const Navbar = () => {
                 {item.label}
               </button>
             ))}
+            <div className="relative px-4 lg:px-5 py-2 rounded-xl font-semibold text-slate-400 bg-slate-800/40 border border-slate-700/50 cursor-not-allowed select-none">
+              Registration Closed
+            </div>
           </div>
 
           <button
@@ -134,6 +136,9 @@ const Navbar = () => {
                 {item.label}
               </button>
             ))}
+              <div className="block w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-400 bg-slate-800/40 border border-slate-700/50 cursor-not-allowed select-none">
+                Registration Closed
+              </div>
             </div>
           </div>
         )}
